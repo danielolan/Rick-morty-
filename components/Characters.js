@@ -28,28 +28,39 @@ export default function Characters({ characters, setCharacters, navigation }) {
         </TouchableOpacity>
         <View style={styles.charactersContainer}>
           {characters.map((character, index) => (
-            <TouchableOpacity 
-              key={index} 
-              style={styles.characterContainer} 
-              onPress={() => navigation.navigate('CharacterDetails', { character })}
+            <TouchableOpacity
+              key={index}
+              style={styles.characterContainer}
+              onPress={() =>
+                navigation.navigate("CharacterDetails", { character })
+              }
             >
               <Image
                 style={styles.characterImage}
                 source={{ uri: character.image }}
               />
-              <View>
+              <View style={styles.containerDetails}>
                 <Text style={styles.characterName}>{character.name}</Text>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <View style={character.status === "Alive" ? styles.statusIndicatorAlive : styles.statusIndicatorDead} />
+                  <View
+                    style={
+                      character.status === "Alive"
+                        ? styles.statusIndicatorAlive
+                        : styles.statusIndicatorDead
+                    }
+                  />
                   <Text style={styles.characterStatus}>{character.status}</Text>
                 </View>
+
                 <Text>
                   <Text style={styles.textGrey}>Episodios: </Text>
-                  <Text>{character.episode.length}</Text>
+                  <Text style={styles.textWhite}>
+                    {character.episode.length}
+                  </Text>
                 </Text>
                 <Text>
                   <Text style={styles.textGrey}>Especie: </Text>
-                  <Text>{character.species}</Text>
+                  <Text style={styles.textWhite}>{character.species}</Text>
                 </Text>
               </View>
             </TouchableOpacity>
@@ -80,15 +91,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   backHomeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 20,
     marginBottom: 20,
   },
   backHomeText: {
-    color: '#00ffea',
-    textAlign: 'center',
+    color: "#00ffea",
+    textAlign: "center",
     fontSize: 22,
     marginLeft: 10, // Espaciado después del icono para mejorar la legibilidad
   },
@@ -101,8 +112,9 @@ const styles = StyleSheet.create({
     width: "48%",
     marginBottom: 20,
     borderRadius: 10, // Bordes redondeados para las tarjetas
-    overflow: 'hidden', // Asegura que la imagen respete los bordes redondeados
-    backgroundColor: '#f0f0f0', // Fondo para las tarjetas
+    overflow: "hidden", // Asegura que la imagen respete los bordes redondeados
+
+    // Fondo para las tarjetas
     elevation: 3, // Sombra para dar efecto elevado
   },
   characterImage: {
@@ -113,26 +125,39 @@ const styles = StyleSheet.create({
   characterName: {
     fontWeight: "bold",
     padding: 10,
-    paddingBottom: 5, // Reducir espacio antes de los detalles
+    paddingBottom: 5,
+    color: "white",
+
+    // Reducir espacio antes de los detalles
   },
   characterStatus: {
     paddingLeft: 10,
-    paddingBottom: 10, // Espacio antes de cerrar la tarjeta
+     // Espacio antes de cerrar la tarjeta
+    color: "white",
   },
   statusIndicatorAlive: {
     width: 10,
     height: 10,
     borderRadius: 5,
     backgroundColor: "green",
-    marginLeft: 10, // Alineación con el texto
+    marginLeft: 10,
   },
   statusIndicatorDead: {
     width: 10,
     height: 10,
     borderRadius: 5,
     backgroundColor: "red",
+    marginLeft: 10,
   },
   textGrey: {
     color: "grey",
+  },
+  containerDetails: {
+    backgroundColor: "#000",
+    padding: 20,
+    backgroundColor: "transparent",
+  },
+  textWhite: {
+    color: "white",
   },
 });
