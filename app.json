@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "76329898-25d9-409c-abca-699b3b46224a"
+      }
+    },
+    "owner": "loco101"
   }
 }
